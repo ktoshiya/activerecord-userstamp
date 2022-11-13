@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Simultaneous code coverage reporting to Coveralls and Code Climate.
 # Latest version can be found at https://gist.github.com/lowjoel/6c2f2d3a08bb3786994f
 require 'simplecov'
@@ -18,6 +19,7 @@ module CoverageHelper
       merge_formatters(old_formatter, SimpleCov.formatter)
     rescue LoadError => e
       raise e unless e.path == name
+
       puts format('Cannot find \'%s\', ignoring', name) if ENV['CI']
     end
 
@@ -39,6 +41,7 @@ module CoverageHelper
     # Extracts the formatters from a MultiFormatter so we do not nest them.
     def expand_formatter(formatter)
       return formatter unless formatter.is_a?(SimpleCov::Formatter::MultiFormatter)
+
       formatter.formatters
     end
   end

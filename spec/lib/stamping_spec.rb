@@ -134,7 +134,7 @@ RSpec.describe 'Stamping', type: :model do
         User.stamper = @hera
         expect(User.stamper).to eq(@hera)
 
-        @delynn.name = @delynn.name + " Berry"
+        @delynn.name = "#{@delynn.name} Berry"
         @delynn.save
         @delynn.reload
         expect(@delynn.creator).to eq(@zeus)
@@ -149,7 +149,7 @@ RSpec.describe 'Stamping', type: :model do
         User.stamper = @hera.id
         expect(User.stamper).to eq(@hera.id)
 
-        @delynn.name = @delynn.name + " Berry"
+        @delynn.name = "#{@delynn.name} Berry"
         @delynn.save
         @delynn.reload
         expect(@delynn.creator_id).to eq(@zeus.id)
@@ -184,7 +184,7 @@ RSpec.describe 'Stamping', type: :model do
         Person.stamper = @nicole.id
         expect(Person.stamper).to eq(@nicole.id)
 
-        @first_post.title = @first_post.title + " - Updated"
+        @first_post.title = "#{@first_post.title} - Updated"
         @first_post.save
         @first_post.reload
         expect(@first_post.creator_id).to eq(@delynn.id)
@@ -199,7 +199,7 @@ RSpec.describe 'Stamping', type: :model do
         Person.stamper = @nicole
         expect(Person.stamper).to eq(@nicole)
 
-        @first_post.title = @first_post.title + " - Updated"
+        @first_post.title = "#{@first_post.title} - Updated"
         @first_post.save
         @first_post.reload
         expect(@first_post.creator_id).to eq(@delynn.id)
@@ -230,12 +230,16 @@ RSpec.describe 'Stamping', type: :model do
 
   context 'when using a generated model' do
     it 'does not query the model on the columns' do
-      class self.class::Post2 < Post
+      module self.class
+        class Post2 < Post
+        end
       end
       allow(self.class::Post2).to receive(:column_names).and_raise(StandardError)
 
-      class self.class::Post2
+      module self.class
+        class Post2
         has_and_belongs_to_many :tags
+        end
       end
     end
   end

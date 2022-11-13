@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    fail
+    raise
   end
 
   private

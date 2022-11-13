@@ -1,8 +1,8 @@
 ActiveRecord::Base.establish_connection
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(version: 0) do
   # Users are created and updated by other Users
-  create_table :users, :force => true do |t|
+  create_table :users, force: true do |t|
     t.column :name,           :string
     t.column :creator_id,     :integer
     t.column :created_on,     :datetime
@@ -11,7 +11,7 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   # People are created and updated by Users
-  create_table :people, :force => true do |t|
+  create_table :people, force: true do |t|
     t.column :name,           :string
     t.column :creator_id,     :integer
     t.column :created_on,     :datetime
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   # Posts are created and updated by People
-  create_table :posts, :force => true do |t|
+  create_table :posts, force: true do |t|
     t.column :title,          :string
     t.column :creator_id,     :integer
     t.column :created_on,     :datetime
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   # Comments are created and updated by People
   # and also use non-standard foreign keys.
-  create_table :comments, :force => true do |t|
+  create_table :comments, force: true do |t|
     t.column :post_id,        :integer
     t.column :comment,        :string
     t.column :created_by,     :integer

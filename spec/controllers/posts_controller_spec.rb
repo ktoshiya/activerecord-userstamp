@@ -8,7 +8,7 @@ RSpec.describe PostsController, type: :controller do
 
   context 'when updating a Post' do
     it 'sets the correct updater' do
-      request.session  = { person_id: @delynn.id }
+      request.session = { person_id: @delynn.id }
       post :update, params: { id: @first_post.id, post: { title: 'Different' } }
 
       expect(response.status).to eq(200)
@@ -22,7 +22,7 @@ RSpec.describe PostsController, type: :controller do
       old_request_session = request.session
       request.session = { person_id: @nicole.id }
 
-      post :update, params: { id: @first_post.id, post: { title: 'Different Second'} }
+      post :update, params: { id: @first_post.id, post: { title: 'Different Second' } }
       expect(controller.instance_variable_get(:@post).updater).to eq(@nicole)
     ensure
       request.session = old_request_session

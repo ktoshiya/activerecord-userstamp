@@ -7,7 +7,7 @@ RSpec.describe UsersController, type: :controller do
   context 'when updating a User' do
     it 'sets the correct updater' do
       request.session = { user_id: @hera.id }
-      patch :update, params: { id: @hera.id, user: { name: 'Different'} }
+      patch :update, params: { id: @hera.id, user: { name: 'Different' } }
 
       expect(response.status).to eq(200)
       expect(controller.instance_variable_get(:@user).name).to eq('Different')
@@ -41,7 +41,7 @@ RSpec.describe UsersController, type: :controller do
       begin
         request.session = { user_id: @zeus.id }
         post :create
-      rescue
+      rescue StandardError
       end
 
       expect(User.stamper).to be(@stamper)

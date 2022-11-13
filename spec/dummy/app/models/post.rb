@@ -10,5 +10,4 @@ class Post < ActiveRecord::Base
       self.deleted_at = DateTime.now
     end
   end
-  
 end

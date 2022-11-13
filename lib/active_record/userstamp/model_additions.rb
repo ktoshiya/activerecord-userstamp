@@ -1,8 +1,12 @@
-module ActiveRecord::Userstamp::ModelAdditions
-  extend ActiveSupport::Concern
+module ActiveRecord
+  module Userstamp
+    module ModelAdditions
+      extend ActiveSupport::Concern
 
-  include ActiveRecord::Userstamp::Stampable
-  include ActiveRecord::Userstamp::Stamper
+      include ActiveRecord::Userstamp::Stampable
+      include ActiveRecord::Userstamp::Stamper
+    end
+  end
 end
 
 ActiveRecord::Base.class_eval do

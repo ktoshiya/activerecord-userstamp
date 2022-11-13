@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 
@@ -21,13 +21,10 @@ module Dummy
 
     # Do not swallow errors in after_commit/after_rollback callbacks. This only applies to Rails 4.2
     # and is deprecated in Rail 5.
-    if ActiveRecord.version == Gem::Version.new('4.2.x')
-      config.active_record.raise_in_transactional_callbacks = true
-    end
+    config.active_record.raise_in_transactional_callbacks = true if ActiveRecord.version == Gem::Version.new('4.2.x')
 
     config.after_initialize do
       require_relative '../db/schema'
     end
   end
 end
-

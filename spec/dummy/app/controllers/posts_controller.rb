@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     render(inline: "<%= @post.title %>")
   end
-  
+
   def update
     @post = Post.find(params[:id])
     @post.update_attributes(post_params)
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    fail
+    raise
   end
 
   protected

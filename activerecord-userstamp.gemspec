@@ -1,6 +1,5 @@
-# -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+lib = File.expand_path('lib', __dir__)
+$:.unshift(lib) unless $:.include?(lib)
 require 'active_record/userstamp/version'
 
 Gem::Specification.new do |s|
@@ -30,12 +29,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', rails_version
 
-  s.add_development_dependency 'tzinfo-data' if RUBY_PLATFORM =~ /mswin|mingw/
+  s.add_development_dependency 'codeclimate-test-reporter'
+  s.add_development_dependency 'coveralls'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rdoc'
   s.add_development_dependency 'rspec-rails', '>= 3.3'
   s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'coveralls'
-  s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'tzinfo-data' if RUBY_PLATFORM =~ /mswin|mingw/
 end
